@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.androidplot.pie.PieChart;
 import com.androidplot.pie.Segment;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Double Value3 = 20.0;
     Double Value4 = 5.0;
 
-    Integer length = 3;
+    Integer length = 0;
 
     PieChart pieChart;
 
@@ -81,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
 //        pieChart.addSegment(s2,sf2);
 //        pieChart.addSegment(s3,sf3);
 //        pieChart.addSegment(s4,sf4);
+
+        if(length==0){
+            Segment sn = new Segment("No Company",1);
+            SegmentFormatter sfn = new SegmentFormatter(Color.GREEN);
+            pieChart.addSegment(sn, sfn);
+            Toast.makeText(this, "No Company added yet", Toast.LENGTH_LONG).show();
+        }
 
         for (int j = 0; j < length; j++) {
             snList.add(new Segment(compList.get(j), arrayList.get(j)));
